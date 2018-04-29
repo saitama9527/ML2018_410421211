@@ -23,7 +23,7 @@ ea = np.asarray(e).copy()
 i = 400*300
 w1 = w2 = w3 = 0.1
 
-w = np.array([w1,w1,w3])
+w = np.random.randn(10,3)
 
 #x = np.array([k1a[0,0],k2a[0,0],ima[0,0]])
 #y = np.array([1,2,3])
@@ -32,12 +32,15 @@ w = np.array([w1,w1,w3])
 #print(x*y)
 
 eptest = epa-k1a-k2a
+epoch = 0
 
-
-for k in range(0, 299):
-    for p in range(0, 399):
-        x[k*p] = np.array(k1a[k,p],k2a[k,p],ima[k,p])
-        a[k*p] =
+for epoch in range(0,5):
+    for k in range(0, 299):
+        for p in range(0, 399):
+            x = np.array([k1a[k,p],k2a[k,p],ima[k,p]])
+            a = w[epoch]*(x.T)
+            ecnt = 
+            w[epoch+1] = w[epoch]+(a*e*x)
 
 
 
