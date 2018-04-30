@@ -22,7 +22,7 @@ ea = np.asarray(e).copy()
 
 i = 400*300
 
-w = np.random.randn(1,3)
+w = np.array([1,1,1])
 print(w)
 wt = np.transpose(w)
 print(w)
@@ -36,9 +36,9 @@ print(w)
 epoch = 1
 eptest = np.random.randn(300,400)
 
-for epoch in range(0,10):
-    for k in range(0, 300):
-        for p in range(0, 400):
+for epoch in range(10):
+    for k in range(300):
+        for p in range(400):
             x = np.array([k1a[k,p],k2a[k,p],ima[k,p]])
             #print(x.shape)
             #print(w[epoch].shape)
@@ -48,15 +48,21 @@ for epoch in range(0,10):
             a = np.dot(w,xt)
             etemp = ea[k,p]-a
             w = w + (0.00001*etemp*xt)
-
 w = np.transpose(w)
 print(w)
 
-for k in range(0, 300):
-    for p in range(0, 400):
-        eptest[k,p] = abs((epa[k,p] - w[0]*k1a[k,p] - w[1]*k2a[k,p])/w[2])
+for k in range(300):
+    for p in range(400):
+        eptest[k,p] = (epa[k,p] - w[0]*k1a[k,p] - w[1]*k2a[k,p])/w[2]
+        if eptest[k,p] >255:
+            eptest[k,p] = 255
+        elif eptest[k,p] <0:
+            eptest[k,p] = 0
+        print(eptest[k,p])
 
 
-
+eptest = np.array(eptest,dtype=np.uint8)
+print(eptest)
 etest = Image.fromarray(eptest)
+#etest.convert('L')
 etest.save("test.png")
