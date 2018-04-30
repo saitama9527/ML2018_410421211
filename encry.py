@@ -4,15 +4,22 @@ import numpy as np
 from PIL import Image
 
 ep = Image.open("Eprime.png")
+print("\nloading images...\n")
+print("load Eprime.png--")
 print(ep.format, ep.size ,ep.mode)
 k1 = Image.open("key1.png")
+print("\nload key1.png--")
 print(k1.format, k1.size ,k1.mode)
 k2 = Image.open("key2.png")
+print("\nload key2.png--")
 print(k2.format, k2.size ,k2.mode)
 im = Image.open("I.png")
+print("\nload I.png--")
 print(im.format, im.size ,im.mode)
 e = Image.open("E.png")
+print("\nload E.png--")
 print(e.format, e.size ,e.mode)
+print("\nstart decryption...")
 
 epa = np.asarray(ep).copy()
 k1a = np.asarray(k1).copy()
@@ -23,15 +30,8 @@ ea = np.asarray(e).copy()
 i = 400*300
 
 w = np.array([1,1,1])
-print(w)
 wt = np.transpose(w)
-print(w)
 
-#x = np.array([k1a[0,0],k2a[0,0],ima[0,0]])
-#y = np.array([1,2,3])
-#xt = x.T
-
-#print(x*y)
 
 epoch = 1
 eptest = np.random.randn(300,400)
@@ -40,16 +40,12 @@ for epoch in range(10):
     for k in range(300):
         for p in range(400):
             x = np.array([k1a[k,p],k2a[k,p],ima[k,p]])
-            #print(x.shape)
-            #print(w[epoch].shape)
-            #print(x)
             xt = np.transpose(x)
 
             a = np.dot(w,xt)
             etemp = ea[k,p]-a
             w = w + (0.00001*etemp*xt)
 w = np.transpose(w)
-print(w)
 
 for k in range(300):
     for p in range(400):
@@ -58,11 +54,10 @@ for k in range(300):
             eptest[k,p] = 255
         elif eptest[k,p] <0:
             eptest[k,p] = 0
-        print(eptest[k,p])
 
 
 eptest = np.array(eptest,dtype=np.uint8)
-print(eptest)
 etest = Image.fromarray(eptest)
-#etest.convert('L')
-etest.save("test.png")
+etest.save("Iprime.png")
+
+print("\nComplete! Decrypted image save as 'Iprime'\n")
