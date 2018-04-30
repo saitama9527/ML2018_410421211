@@ -31,18 +31,25 @@ w = np.random.randn(10,3)
 
 #print(x*y)
 
-eptest = epa-k1a-k2a
-epoch = 0
+epoch = 1
+eptest = np.random.randn(300,400)
 
 for epoch in range(0,5):
-    for k in range(0, 299):
-        for p in range(0, 399):
-            x = np.array([k1a[k,p],k2a[k,p],ima[k,p]])
-            a = w[epoch]*(x.T)
-            ecnt = 
-            w[epoch+1] = w[epoch]+(a*e*x)
+    for k in range(0, 300):
+        for p in range(0, 400):
+            x = np.array([k1a[k,p],k2a[k,p],ima[k,p]]).T
+            #print(x.shape)
+            #print(w[epoch].shape)
+            a = np.dot(w[epoch].T,x)
+            etemp = ea[k,p]-a
+            w[epoch+1] = w[epoch]+(0.00001*etemp*x)
 
 
+print(w[5])
+
+for k in range(0, 300):
+    for p in range(0, 400):
+        eptest[k,p] = (epa[k,p] - w[5,0]*k1a[k,p] - w[5,1]*k2a[k,p])/w[5,2]
 
 
 
