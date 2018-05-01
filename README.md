@@ -8,7 +8,7 @@
 2. 將圖片轉成2維陣列
 3. 設定初始weight 1維陣列
 4. 在限制的epoch內，使用梯度下降法利用已解密的圖片進行training
------Training的參數: Learn rate = 0.00001 , Max epoch = 10
++ Training的參數: Learn rate = 0.00001 , Max epoch = 10
 5. 計算出weight後，反推出解密後圖片的陣列
 6. 用np.uint8轉為整數後，輸出成圖片(png)
 
