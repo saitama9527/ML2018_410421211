@@ -3,25 +3,25 @@
 利用梯度下降法解密圖片
 
 --------------------------
-<ol>
-<li>使用PIL讀取圖片</li>
-<li>將圖片轉成2維陣列</li>
-<li>設定初始weight 1維陣列</li>
-<li>在限制的epoch內，使用梯度下降法利用已解密的圖片進行training</li>
-<li>Training的參數: Learn rate = 0.00001 , Max epoch = 10</li>
-<li>計算出weight後，反推出解密後圖片的陣列</li>
-<li>用np.uint8轉為整數後，輸出成圖片(png)</li>
-</ol>
+
+1. 使用PIL讀取圖片
+2. 將圖片轉成2維陣列
+3. 設定初始weight 1維陣列
+4. 在限制的epoch內，使用梯度下降法利用已解密的圖片進行training
+-----Training的參數: Learn rate = 0.00001 , Max epoch = 10-----
+5. 計算出weight後，反推出解密後圖片的陣列
+6. 用np.uint8轉為整數後，輸出成圖片(png)
+
 
 ### weight #
 Weight vector w = [0.24914331 , 0.6613819 , 0.08923953]
 
-以下為解密前與解密後
+#### 以下為解密前與解密後 
 
-#### 解密前 #
+##### 解密前 #
 ![Alt text](https://imgur.com/1nEVhKv.png)
 
-#### 解密後 #
+##### 解密後 #
 ![Alt text](https://imgur.com/PxkqGcv.png)
 
 #### 遇到的問題 #
