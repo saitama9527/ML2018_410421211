@@ -19,7 +19,7 @@ print(im.format, im.size ,im.mode)
 e = Image.open("E.png")
 print("\nload E.png--")
 print(e.format, e.size ,e.mode)
-print("\nstart decryption...")              #讀取照片並印出格式
+print("\nstart decryption...\n")              #讀取照片並印出格式
 
 epa = np.asarray(ep).copy()
 k1a = np.asarray(k1).copy()
@@ -56,5 +56,8 @@ for k in range(300):                        #對於Eprime中的像素，用公�
 eptest = np.array(eptest,dtype=np.uint8)    #浮點數轉為整數
 etest = Image.fromarray(eptest)             #將矩陣轉為圖檔
 etest.save("Iprime.png")
+
+print("w = ")
+print(w)
 
 print("\nComplete! Decrypted image save as 'Iprime'\n")
