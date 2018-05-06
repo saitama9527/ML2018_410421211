@@ -19,7 +19,7 @@ print(im.format, im.size ,im.mode)
 e = Image.open("E.png")
 print("\nload E.png--")
 print(e.format, e.size ,e.mode)
-print("\nstart decryption...\n")              #讀取照片並印出格式
+print("\nstart decryption...\n")            #讀取照片並印出格式
 
 epa = np.asarray(ep).copy()
 k1a = np.asarray(k1).copy()
