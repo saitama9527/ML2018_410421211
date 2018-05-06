@@ -57,7 +57,6 @@ eptest = np.array(eptest,dtype=np.uint8)    #浮點數轉為整數
 etest = Image.fromarray(eptest)             #將矩陣轉為圖檔
 etest.save("Iprime.png")
 
-print("w = ")
-print(w)
+print("w = ",w)
 
 print("\nComplete! Decrypted image save as 'Iprime'\n")
